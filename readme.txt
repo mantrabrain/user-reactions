@@ -1,0 +1,26 @@
+=== User Reactions ===
+Contributors: mantrabrain
+Tags: reactions, reaction, facebook reactions, facebook, like, emotions, votes, voting, rating, wordpress reactions
+Requires at least: 3.0
+Tested up to: 5.0.3
+Stable tag: 1.0.0
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+A simple plugin that helps you integrate reaction buttons into your WordPress site look like Facebook.
+
+== Description ==
+
+A simple plugin that helps you integrate reaction buttons into your WordPress site look like Facebook.
+
+== Installation ==
+
+1. Upload the `user-reactions` folder to the `/wp-content/plugins/` directory or install directly through the plugin installer.
+2. Activate the plugin through the 'Plugins' menu in WordPress or by using the link provided by the plugin installer
+
+== Changelog ==
+
+= 1.0.0 - 2019/03/01 =
+* Initial release
+
+

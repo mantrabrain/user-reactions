@@ -1,0 +1,193 @@
+#
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: User Reactions\n"
+"POT-Creation-Date: 2019-02-28 16:21+0700\n"
+"PO-Revision-Date: 2019-03-01 09:30+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: user-reactions.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: user-reactions.php:134 user-reactions.php:284
+msgid "Like"
+msgstr ""
+
+#: user-reactions.php:135 user-reactions.php:293
+msgid "Love"
+msgstr ""
+
+#: user-reactions.php:136 user-reactions.php:291
+msgid "Haha"
+msgstr ""
+
+#: user-reactions.php:137 user-reactions.php:295
+msgid "Wow"
+msgstr ""
+
+#: user-reactions.php:138 user-reactions.php:299
+msgid "Sad"
+msgstr ""
+
+#: user-reactions.php:139 user-reactions.php:297
+msgid "Angry"
+msgstr ""
+
+#: user-reactions.php:206
+msgid "Missing post."
+msgstr ""
+
+#: user-reactions.php:210
+msgid "Missing type."
+msgstr ""
+
+#: user-reactions.php:326
+msgid "Reactions Settings"
+msgstr ""
+
+#: user-reactions.php:326
+msgid "Reactions"
+msgstr ""
+
+#: user-reactions.php:343
+msgid ""
+"To display the reactions button on your blog posts, you can use one of two "
+"ways below:"
+msgstr ""
+
+#: user-reactions.php:345
+msgid "1. Automatically display on the content of each post."
+msgstr ""
+
+#: user-reactions.php:350
+msgid "Show reactions button."
+msgstr ""
+
+#: user-reactions.php:352
+msgid "Show reactions count."
+msgstr ""
+
+#: user-reactions.php:355
+msgid "Users must be registered and logged in to add reaction."
+msgstr ""
+
+#: user-reactions.php:361
+msgid "Positions"
+msgstr ""
+
+#: user-reactions.php:363
+msgid "Show the reactions button above the post content."
+msgstr ""
+
+#: user-reactions.php:364
+msgid "Show the reactions button below the post content."
+msgstr ""
+
+#: user-reactions.php:368
+msgid "Pages"
+msgstr ""
+
+#: user-reactions.php:370
+msgid "Show on Homepage"
+msgstr ""
+
+#: user-reactions.php:371
+msgid "Show on Archive pages"
+msgstr ""
+
+#: user-reactions.php:372
+msgid "Show on all Posts"
+msgstr ""
+
+#: user-reactions.php:373
+msgid "Show on all Pages"
+msgstr ""
+
+#: user-reactions.php:378
+msgid "2. Manually insert into your theme."
+msgstr ""
+
+#: user-reactions.php:381
+msgid "1. Open <code>wp-content/themes/&lt;Your theme folder&gt;/</code>."
+msgstr ""
+
+#: user-reactions.php:382
+msgid ""
+"2. You may place it in <code>archive.php</code>, <code>single.php</code>, "
+"<code>post.php</code> or <code>page.php</code> also."
+msgstr ""
+
+#: user-reactions.php:383
+msgid ""
+"3. Find <code>&lt;&#63;php while (have_posts()) : the_post(); &#63;&gt;</"
+"code>."
+msgstr ""
+
+#: user-reactions.php:384
+msgid ""
+"4. Add anywhere below it (The place you want Reactions to show): <code>&lt;"
+"&#63;php if (function_exists('user_reactions')) { user_reactions() } &#63;&gt;</"
+"code>."
+msgstr ""
+
+#: user-reactions.php:386
+msgid ""
+"If you DO NOT want the reactions to appear in every post/page, DO NOT use "
+"the code above. Just type in <code>[reactions]</code> into the selected post/"
+"page and it will embed reactions into that post/page only."
+msgstr ""
+
+#: user-reactions.php:387
+msgid ""
+"If you to use reactions button for specific post/page you can use this short "
+"code <code>[reactions id=\"1\"]</code>, where 1 is the ID of the post/page."
+msgstr ""
+
+#: user-reactions.php:388
+msgid ""
+"If you want to show reactions button you can use <code>[reactions "
+"count=false button=true]</code>."
+msgstr ""
+
+#: user-reactions.php:389
+msgid ""
+"If you want to show reactions count you can use <code>[reactions count=true "
+"button=false]</code>."
+msgstr ""
+
+#: user-reactions.php:391
+msgid "Save changes"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "User Reactions"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/user-reactions/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A simple plugin that helps you integrate reactions buttons into your "
+"WordPress site look like Facebook."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Mantrabrain"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://mantrabrain.com/"
+msgstr ""

@@ -2,17 +2,87 @@
 
 class User_Reactions
 {
+
+    /**
+     * User_Reactions version.
+     *
+     * @var string
+     */
+    public $version = USER_REACTIONS_VERSION;
+
+    /**
+     * The single instance of the class.
+     *
+     * @var User_Reactions
+     * @since 1.0.0
+     */
+    protected static $_instance = null;
+
+
+    /**
+     * Main User_Reactions Instance.
+     *
+     * Ensures only one instance of User_Reactions is loaded or can be loaded.
+     *
+     * @since 1.0.0
+     * @static
+     * @return User_Reactions - Main instance.
+     */
+    public static function instance()
+    {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+
     private static $timeversion = 120004042016;
+
+    public function __construct()
+    {
+        $this->define_constants();
+        $this->includes();
+        $this->init_hooks();
+        do_action('user_reactions_loaded');
+    }
+
+    public function includes()
+    {
+        include_once USER_REACTIONS_ABSPATH . 'includes/class-user-reactions-install.php';
+
+    }
+
+    /**
+     * Define User_Reactions Constants.
+     */
+    private function define_constants()
+    {
+
+        $this->define('USER_REACTIONS_ABSPATH', dirname(USER_REACTIONS_FILE) . '/');
+        $this->define('USER_REACTIONS_BASENAME', plugin_basename(USER_REACTIONS_FILE));
+    }
+
+    /**
+     * Define constant if not already set.
+     *
+     * @param string $name Constant name.
+     * @param string|bool $value Constant value.
+     */
+    private function define($name, $value)
+    {
+        if (!defined($name)) {
+            define($name, $value);
+        }
+    }
 
     /**
      * Class Construct
      */
-    public function __construct()
+    public function init_hooks()
     {
         // register shortcode
         add_shortcode('user_reactions', array($this, 'shortcode_reactions'));
-        register_activation_hook(__FILE__, array($this, 'set_default_setting'));
-
+        register_activation_hook(USER_REACTIONS_FILE, array('User_Reactions_Install', 'install'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_script'));
         add_action('wp_head', array($this, 'head'));
         add_action('admin_menu', array($this, 'settings_page'));
@@ -32,27 +102,6 @@ class User_Reactions
     {
         // Load translate text domain
         load_plugin_textdomain('user-reactions', false, plugin_basename(dirname(__FILE__)) . '/languages');
-    }
-
-    public function set_default_setting()
-    {
-        $data = array(
-            'enable' => 'on',
-            'enable_count' => 'on',
-            'anonymous_can_vote' => 'on',
-            'position' => array(
-                'above' => 'on',
-                'below' => 'on',
-            ),
-            'pages' => array(
-                'home' => 'on',
-                'archive' => 'on',
-                'posts' => 'on',
-                'pages' => 'on'
-            )
-        );
-
-        update_option('user_reactions', $data);
     }
 
     /**
@@ -184,8 +233,8 @@ class User_Reactions
      */
     public function enqueue_script()
     {
-        wp_enqueue_style('user-reaction-style', USER_REACTIONS_URL . '/assets/css/style.css', array(), self::$timeversion);
-        wp_enqueue_script('user-reaction-script', USER_REACTIONS_URL . '/assets/js/script.js', array('jquery'), self::$timeversion);
+        wp_enqueue_style('user-reaction-style', USER_REACTIONS_PLUGIN_URI . '/assets/css/style.css', array(), self::$timeversion);
+        wp_enqueue_script('user-reaction-script', USER_REACTIONS_PLUGIN_URI . '/assets/js/script.js', array('jquery'), self::$timeversion);
         $localize = array(
             'ajax' => admin_url('admin-ajax.php'),
         );
@@ -410,12 +459,6 @@ class User_Reactions
                 <hr>
                 <h3><?php esc_attr_e('2. Manually insert into your theme.', 'user-reactions') ?></h3>
                 <p>
-
-                <p><?php _e('1. Open <code>wp-content/themes/&lt;Your theme folder&gt;/</code>.', 'user-reactions'); ?></p>
-                <p><?php _e('2. You may place it in <code>archive.php</code>, <code>single.php</code>, <code>post.php</code> or <code>page.php</code> also.', 'user-reactions'); ?></p>
-                <p><?php _e('3. Find <code>&lt;&#63;php while (have_posts()) : the_post(); &#63;&gt;</code>.', 'user-reactions'); ?></p>
-                <p><?php _e("4. Add anywhere below it (The place you want Reactions to show): <code>&lt;&#63;php if (function_exists('user_reactions')) { user_reactions(); } &#63;&gt;</code>.", 'user-reactions'); ?></p>
-                <hr>
                 <p><?php _e('If you DO NOT want the reactions to appear in every post/page, DO NOT use the code above. Just type in <code>[user-reactions]</code> into the selected post/page and it will embed reactions into that post/page only.', 'user-reactions'); ?></p>
                 <p><?php _e('If you to use reactions button for specific post/page you can use this short code <code>[user-reactions id="1"]</code>, where 1 is the ID of the post/page.', 'user-reactions'); ?></p>
                 <p><?php _e('If you want to show reactions button you can use <code>[user-reactions count=false button=true]</code>.', 'user-reactions') ?></p>
@@ -435,7 +478,7 @@ class User_Reactions
     {
         if (isset($_POST['user_reactions'])) {
             $valid_post_data = $this->get_valid_post($_POST['user_reactions']);
-            if(count($valid_post_data)>0) {
+            if (count($valid_post_data) > 0) {
                 update_option('user_reactions', $valid_post_data);
             }
         }
@@ -462,12 +505,12 @@ class User_Reactions
         }
 
         if (isset($post_data['position'])) {
-            if(isset($post_data['position']['above'])){
+            if (isset($post_data['position']['above'])) {
                 $valid_post_data['position']['above'] = sanitize_text_field($post_data['position']['above']);
 
             }
 
-            if(isset($post_data['position']['below'])){
+            if (isset($post_data['position']['below'])) {
                 $valid_post_data['position']['below'] = sanitize_text_field($post_data['position']['below']);
 
             }
@@ -475,21 +518,21 @@ class User_Reactions
         }
 
         if (isset($post_data['pages'])) {
-            if(isset($post_data['pages']['home'])){
+            if (isset($post_data['pages']['home'])) {
                 $valid_post_data['pages']['home'] = sanitize_text_field($post_data['pages']['home']);
 
             }
 
-            if(isset($post_data['pages']['archive'])){
+            if (isset($post_data['pages']['archive'])) {
                 $valid_post_data['pages']['archive'] = sanitize_text_field($post_data['pages']['archive']);
 
             }
 
-            if(isset($post_data['pages']['posts'])){
+            if (isset($post_data['pages']['posts'])) {
                 $valid_post_data['pages']['posts'] = sanitize_text_field($post_data['pages']['posts']);
 
             }
-            if(isset($post_data['pages']['pages'])){
+            if (isset($post_data['pages']['pages'])) {
                 $valid_post_data['pages']['pages'] = sanitize_text_field($post_data['pages']['pages']);
 
             }

@@ -368,10 +368,11 @@ class User_Reactions
             'count' => 'true',
         ), $atts, 'user_reactions'));
 
+
         $button = 'true' == $button ? true : false;
         $count = 'true' == $count ? true : false;
 
-        echo $this->layout($id, $button, $count);
+        return $this->layout($id, $button, $count);
     }
 
     /**

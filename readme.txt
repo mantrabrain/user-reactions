@@ -18,6 +18,11 @@ A simple plugin that helps you integrate reaction buttons into your WordPress si
 1. Upload the `user-reactions` folder to the `/wp-content/plugins/` directory or install directly through the plugin installer.
 2. Activate the plugin through the 'Plugins' menu in WordPress or by using the link provided by the plugin installer
 
+== Screenshots ==
+
+1. Setting Page
+2. Front Page
+
 == Changelog ==
 
 = 1.0.1 - 2019/06/06 =

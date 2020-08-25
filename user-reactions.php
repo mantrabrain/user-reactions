@@ -5,7 +5,7 @@
 * Description: A simple plugin that helps you integrate reaction buttons into your WordPress site look like Facebook.
 * Author: Mantrabrain
 * Author URI: https://mantrabrain.com/
-* Version: 1.0.1
+* Version: 1.0.2
 * Text Domain: user-reactions
 */
 
@@ -21,7 +21,7 @@ if (!defined('USER_REACTIONS_FILE')) {
 
 // Define USER_REACTIONS_VERSION.
 if (!defined('USER_REACTIONS_VERSION')) {
-    define('USER_REACTIONS_VERSION', '1.0.1');
+    define('USER_REACTIONS_VERSION', '1.0.2');
 }
 
 // Define USER_REACTIONS_PLUGIN_URI.
